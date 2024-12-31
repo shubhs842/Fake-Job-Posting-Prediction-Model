@@ -1,89 +1,70 @@
-# Fake Job Posting Prediction Model
+## Job Postings Detection Model
+This project focuses on detecting fraudulent job postings using machine learning techniques. It involves data preprocessing, feature extraction, and model training using two classifiers: Random Forest and XGBoost. Below is an overview of the workflow, implementation details, and results.
 
-This repository contains a machine learning project focused on detecting fake job postings using data analysis and predictive modeling. The repository includes a Jupyter Notebook, dataset, and a detailed project report.
+## Project Overview
+Fraudulent job postings can cause significant harm to job seekers. This project aims to classify job postings as either fraudulent or legitimate using natural language processing and machine learning techniques.
 
-## Contents
+## Dataset
+The dataset used in this project is fake_job_postings.csv. It contains the following key columns:
+•	Text Features: company_profile, description, requirements, benefits
+•	Numerical Features: telecommuting, has_company_logo, has_questions
+•	Target: fraudulent
 
-- **Project_Model_Final.ipynb**: The main notebook containing all the code, explanations, and visualizations for the project.
-- **report fake job.pdf**: A detailed project report summarizing objectives, methodologies, results, and conclusions.
-- **Companies_Information.csv**: Dataset containing company-related information used as part of the analysis.
-
-## Objective
-
-The objective of this project is to classify job postings as genuine or fraudulent based on features and patterns in the dataset.
-
-## Features
-
-- **Data Preprocessing**:
-  - Cleaning, handling missing values, and encoding categorical variables.
-  - Text preprocessing with tokenization, stop word removal, and TF-IDF vectorization.
-- **Exploratory Data Analysis (EDA)**:
-  - Visualization of patterns in genuine vs. fraudulent postings.
-  - Insights into textual and numerical data trends.
-- **Model Development**:
-  - Logistic Regression: Baseline model achieving 91% accuracy.
-  - Random Forest Classifier: Improved performance with 97% accuracy.
-  - XGBoost: Best-performing model with 98% accuracy, precision of 0.96, and recall of 0.94.
-- **Evaluation Metrics**:
-  - Accuracy, Precision, Recall, and F1-Score.
-
-## Requirements
-
-To run this project, you'll need the following tools and libraries:
-
-- Python 3.7 or higher
-- Jupyter Notebook
-- Libraries:
-  - pandas
-  - numpy
-  - matplotlib
-  - seaborn
-  - scikit-learn
-  - xgboost
-
-Install the required libraries using:
-```bash
-pip install -r requirements.txt
-```
-
-> **Note**: Ensure to list all the necessary libraries and their versions in the `requirements.txt` file.
-
-## Usage
-
-1. Clone this repository to your local machine:
-   ```bash
-   git clone <repository-url>
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd <repository-directory>
-   ```
-3. Place the required dataset (`Companies_Information.csv`) in the appropriate folder.
-4. Open the Jupyter Notebook:
-   ```bash
-   jupyter notebook Project_Model_Final.ipynb
-   ```
-5. Run the cells sequentially to execute the project.
+## Workflow
+1.	Data Loading and Exploration
+o	Loaded the dataset and displayed basic statistics.
+o	Handled missing values by filling text fields with empty strings and dropping rows with missing target values.
+2.	Feature Engineering
+o	Combined text columns into a single feature combined_text.
+o	Applied TF-IDF Vectorization to extract textual features.
+o	Combined numerical and text features for model training.
+3.	Model Training
+o	Split the dataset into training and testing sets (80/20).
+o	Trained two models:
+	Random Forest Classifier
+	XGBoost Classifier
+4.	Evaluation Metrics
+o	Accuracy
+o	ROC-AUC Score
+o	Confusion Matrix
+o	Classification Report
+5.	Feature Importance Analysis
+o	Used SHAP for interpretability.
+o	Employed permutation importance for Random Forest.
 
 ## Results
+Model Performance
+Metric	Random Forest	XGBoost
+Accuracy	90.00%	91.50%
+ROC-AUC Score	0.92	0.94
+Insights
+•	Random Forest: Reliable baseline model with balanced recall and precision.
+•	XGBoost: Higher accuracy and ROC-AUC, excels in handling structured data.
 
-The project successfully developed a machine learning model to predict fake job postings with high accuracy. Key findings include:
+## Key Plots
+1.	ROC Curve Comparison: Shows the performance of Random Forest and XGBoost.
+2.	SHAP Summary Plot: Highlights feature contributions to predictions.
+3.	Permutation Feature Importance: Identifies critical features impacting Random Forest predictions.
 
-- Fake postings often feature vague job descriptions and missing details.
-- XGBoost proved to be the most reliable model with an F1-Score of 0.95.
+## Instructions for Use
+1.	Dependencies
+o	Python 3.x
+o	Required Libraries: pandas, numpy, matplotlib, seaborn, scikit-learn, xgboost, shap
+2.	Run the Code
+o	Load the dataset: Ensure the file fake_job_postings.csv is in the working directory.
+o	Execute the script in a Jupyter Notebook or Python environment.
+3.	Optimization Notes
+o	Reduced dataset size for permutation importance to improve runtime.
+o	Adjusted SHAP analysis to handle dense matrix input.
 
-## Contributing
-
-Contributions are welcome! If you find any issues or have suggestions for improvement, feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-For more projects, visit my GitHub profile: [Shubham Mohod](https://github.com/shubhs842).
+## Future Work
+•	Hyperparameter tuning for XGBoost to further improve performance.
+•	Exploration of additional models like LightGBM or neural networks.
+•	Incorporation of additional features (e.g., metadata).
 
 ## Acknowledgments
+This project uses the fake_job_postings.csv dataset to address a critical problem in job markets. Special thanks to contributors and developers of Python libraries and tools used in this project.
 
-- Dataset and preprocessing inspiration.
-- Libraries and frameworks used in this project.
-- Report summarizing project objectives and results.
+## Contact
+For questions or feedback, please contact Shubham Mohod at mohods193@gmail.com.
+
